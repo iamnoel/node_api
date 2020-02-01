@@ -9,7 +9,7 @@ app.listen(port, () => console.log(`Application listening on ${port}`));
 app.get("/", (req, res) => res.send("Hello World!"));
 
 makeGetRequest = async () => {
-  let res = await axios.get("http://webcode.me");
+  let res = await axios({ method: "get", url: "http://webcode.me" });
   console.log("Successfully made connection:");
   let data = res.data;
   //   console.log(data);
@@ -17,14 +17,19 @@ makeGetRequest = async () => {
 };
 
 getUserID = async name => {
-  let res = await axios.get("http://localhost:3001/fakedata2/");
+  let res = await axios({
+    method: "get",
+    url: "http://localhost:3001/fakedata2/"
+  });
   let data = res.data;
   console.log(data);
   return data;
 };
 
 deleteUser = async id => {
-  let res = await axios.get(`http://localhost:3001/fakedata1/${id}`, {
+  let res = await axios({
+    method: "get",
+    url: `http://localhost:3001/fakedata1/${id}`,
     params: {
       id: id
     }
