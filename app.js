@@ -12,14 +12,14 @@ makeGetRequest = async () => {
   const res = await axios({method: 'get', url: 'http://webcode.me'});
   console.log('Successfully made connection:');
   const data = res.data;
-  //   console.log(data);
+  // console.log(data);
   return data;
 };
 
 getUserID = async (name) => {
   const res = await axios({
     method: 'get',
-    url: 'http://localhost:3001/fakedata2/',
+    url: `${process.env.API_SERVER}/fakedata2/${name}`,
   });
   const data = res.data;
   console.log(data);
@@ -29,7 +29,7 @@ getUserID = async (name) => {
 deleteUser = async (id) => {
   const res = await axios({
     method: 'get',
-    url: `http://localhost:3001/fakedata1/${id}`,
+    url: `${process.env.API_SERVER}/fakedata1/${id}`,
     params: {
       id: id,
     },
@@ -50,12 +50,18 @@ app.get('/fakedata1/:id', async (req, res) => {
   res.send(data);
 });
 
-app.get('/fakedata2/', async (req, res) => {
+app.get('/fakedata2/:name', async (req, res) => {
   console.log('User ID requested');
   const data = {
-    id: 1234,
-    name: 'Name Name',
+    name: req.params.name,
   };
+
+  if (data.name.toLowerCase() === 'noel') {
+    data.id = 1234;
+  } else if (data.name.toLowerCase() == 'ward') {
+    data.id = 2234;
+  }
+
   res.send(data);
 });
 
