@@ -1,0 +1,28 @@
+{
+  "name": "node_api",
+  "version": "1.0.0",
+  "description": "A simple Node API",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamnoel/node_api.git"
+  },
+  "keywords": [
+    "Node",
+    "API"
+  ],
+  "author": "Noel Ward",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamnoel/node_api/issues"
+  },
+  "homepage": "https://github.com/iamnoel/node_api#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
